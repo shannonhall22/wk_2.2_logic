@@ -103,33 +103,40 @@ class ProblemsController  < ApplicationController
     render 'problem'
   end
 
-  def num_7
+  def problem_display
     #=== Instructions ======================
     # Create a form that asks the user how his day
     # went.
+    # You'll need to create a new view
+    #==================================
+
+    render "problem_display"
+  end
+
+  def problem_process
     # - If the user enters "good", respond with
     # "That's great!"
     # - If the user enters "not good", respond with
     # "Bummer"
     # - For all other cases, respond with "I see..."
-    #
     # Bonus: Add more elsif statments to catch
     # other cases
     # Another Bonus: Process user input so
     # capitalization doesn't affect your response
-    #
-    # You'll need to create a new view
-    #==================================
 
-    render 'num_7_display'
-  end
+    standard = params["feeling"].downcase
 
-  def num_7_process
+    if (standard == "good")
+        @result = "That's great!"
+    elsif (standard == "not good")
+        @result = "Bummer"
+    elsif (standard =="awesome")
+        @result = "Cool"
+    else
+        @result = "I see..."
+    end
 
-        @result = params["feeling"]
-
-
-    render 'problem_process'
+    render "problem_process"
   end
 
 end
