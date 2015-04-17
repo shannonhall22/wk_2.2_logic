@@ -7,7 +7,7 @@ class ProblemsController  < ApplicationController
     #==================================
     number = 23
 
-    @result = "replace this string with your answer"
+    @result = number > 11
     render 'problem'
   end
 
@@ -18,8 +18,12 @@ class ProblemsController  < ApplicationController
     # "not instructor" otherwise
     #==================================
     name = "Bob"
+    if (name == "Arjun")
+        @result = "instructor"
+    else
+        @result = "not instructor"
+    end
 
-    @result = "replace this string with your answer"
     render 'problem'
   end
 
@@ -32,8 +36,12 @@ class ProblemsController  < ApplicationController
     #==================================
     money = 73000
 
-    @result = "replace this string with your answer"
+    if (money > 75000)
+        @result = "no further effect on happiness"
+    else
+        @result = "some effect on happiness"
     render 'problem'
+    end
   end
 
   def num_4
@@ -45,7 +53,13 @@ class ProblemsController  < ApplicationController
     #==================================
     activity = "cleaning"
 
-    @result = "replace this string with your answer"
+    if (activity == "napping")
+        @result = "the best"
+    elsif(activity == "cleaning")
+        @result = "the worst"
+    else
+        @result = "meh"
+    end
     render 'problem'
   end
 
@@ -57,7 +71,13 @@ class ProblemsController  < ApplicationController
     #==================================
     score = 82
 
-    @result = "replace this string with your answer"
+    if score > 89
+        @result = "A"
+    elsif score > 79
+        @result = "B"
+    else
+        @result = "C"
+    end
     render 'problem'
   end
 
@@ -71,7 +91,15 @@ class ProblemsController  < ApplicationController
     #==================================
     food = "cake shake"
 
-    @result = "replace this string with your answer"
+    if (food == "fruit")
+        @result = "healthy"
+    elsif (food == "vegetables")
+        @result = "healthy"
+    elsif (food == "Lucky Charms")
+        @result = "unhealthy"
+    else (food == "cake shake")
+        @result = "heart attack"
+    end
     render 'problem'
   end
 
@@ -93,6 +121,15 @@ class ProblemsController  < ApplicationController
     # You'll need to create a new view
     #==================================
 
-    render 'problem'
+    render 'num_7_display'
   end
+
+  def num_7_process
+
+        @result = params["feeling"]
+
+
+    render 'problem_process'
+  end
+
 end
